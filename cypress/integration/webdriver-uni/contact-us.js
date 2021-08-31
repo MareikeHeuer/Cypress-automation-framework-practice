@@ -10,6 +10,7 @@ describe("Test Contact Us form via WebdriverUni", () => {
     cy.get('[name="email"]').type("joe@hotmail.com");
     cy.get("textarea.feedback-input").type("Here is the comment");
     cy.get('[type="submit"]').click();
+    cy.get("h1").should("have.text", "Thank You for your Message!"); // Cypress Assertion
   });
 
   it("Should not be able to submit a successful submission via contact us form as all fields required", () => {
@@ -20,5 +21,6 @@ describe("Test Contact Us form via WebdriverUni", () => {
     // cy.get('[name="email"]').type("joe@hotmail.com")
     cy.get("textarea.feedback-input").type("This should not work");
     cy.get('[type="submit"]').click();
+    cy.get("body").contains("Error: all fields are required");
   });
 });
