@@ -5,6 +5,9 @@ describe("Test Contact Us form via WebdriverUni", () => {
     // cypress code
     cy.visit("http://www.webdriveruniversity.com/Contact-Us/contactus.html");
     //cy.get('#contact-us').click({force: true})
+    cy.document().should("have.property", "charset").and("eq", "UTF-8"); // Chai Assertion
+    cy.title().should("include", "WebDriver | Contact Us"); // title assertion
+    cy.url().should("include", "contactus"); // url assertion
     cy.get('[name="first_name"]').type("Joe");
     cy.get('[name="last_name"]').type("Miller");
     cy.get('[name="email"]').type("joe@hotmail.com");
